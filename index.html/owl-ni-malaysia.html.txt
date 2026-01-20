@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Owl Ni Malaysia</title>
+  <meta name="description" content="Laman web ringkas bertema hutan tentang burung hantu di Malaysia." />
+
+  <style>
+    /* ==============================
+       Tema: Hutan Hijau Gelap (Profesional)
+       Tukar warna cepat di sini:
+       ============================== */
+    :root{
+      --bg: #06130d;          /* latar utama */
+      --bg2: #081a12;         /* variasi latar */
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --line: rgba(255,255,255,.14);
+      --accent: #2ecc71;      /* hijau aksen */
+      --accent2: #0f6b3b;     /* hijau gelap */
+      --shadow: 0 18px 44px rgba(0,0,0,.42);
+      --radius: 22px;
+      --max: 1120px;
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1100px 800px at 12% 12%, rgba(46,204,113,.22), transparent 60%),
+        radial-gradient(900px 700px at 85% 25%, rgba(15,107,59,.25), transparent 62%),
+        radial-gradient(1000px 800px at 55% 110%, rgba(46,204,113,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      overflow-x: hidden;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+
+    .container{
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* ===== Header ===== */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(6,19,13,.58);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 12px;
+    }
+
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 750;
+      letter-spacing: .2px;
+      user-select: none;
+    }
+
+    .leaf{
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 35% 35%, rgba(46,204,113,1), rgba(15,107,59,1));
+      box-shadow: 0 0 0 6px rgba(255,255,255,.04);
+    }
+
+    nav ul{
+      list-style: none;
+      display: flex;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a{
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--muted);
+      transition: .18s ease;
+    }
+
+    nav a:hover{
+      color: var(--text);
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.12);
+    }
+
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      box-shadow: 0 10px 26px rgba(0,0,0,.28);
+      cursor: pointer;
+      transition: transform .14s ease, background .18s ease, border-color .18s ease;
+      user-select: none;
+    }
+
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.22); }
+    .btn:active{ transform: translateY(0px) scale(.99); }
+
+    .btn.primary{
+      border-color: rgba(255,255,255,0);
+      background: linear-gradient(135deg, rgba(46,204,113,1), rgba(15,107,59,1));
+      color: rgba(6,19,13,.96);
+      font-weight: 800;
+    }
+
+    /* ===== Hero ===== */
+    .hero{ padding: 56px 0 26px; }
+
+    .hero-grid{
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-left{
+      padding: 28px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-left:before{
+      content:"";
+      position: absolute;
+      inset: -140px -90px auto auto;
+      width: 340px;
+      height: 340px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(46,204,113,.42), transparent 62%),
+        radial-gradient(circle at 60% 60%, rgba(15,107,59,.40), transparent 60%);
+      opacity: .85;
+      pointer-events: none;
+      filter: blur(1px);
+    }
+
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.08;
+      letter-spacing: -0.6px;
+    }
+
+    .sub{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 62ch;
+    }
+
+    .pill-row{
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 14px 0 22px;
+    }
+
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: rgba(255,255,255,.86);
+      font-size: 13px;
+    }
+
+    .pill i{
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(46,204,113,1), rgba(15,107,59,1));
+      display: inline-block;
+    }
+
+    .cta{
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .hero-right{
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .forest-frame{
+      height: 100%;
+      min-height: 260px;
+      border-radius: calc(var(--radius) - 6px);
+      border: 1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(600px 260px at 60% 0%, rgba(46,204,113,.22), transparent 62%),
+        radial-gradient(520px 260px at 20% 20%, rgba(15,107,59,.26), transparent 62%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Siluet hutan + burung hantu (semua CSS, tiada imej luar) */
+    .forest-frame:before{
+      content:"";
+      position: absolute;
+      inset: auto -20% -18% -20%;
+      height: 68%;
+      background:
+        radial-gradient(80px 160px at 8% 80%, rgba(0,0,0,.55), transparent 60%),
+        radial-gradient(90px 200px at 18% 82%, rgba(0,0,0,.55), transparent 60%),
+        radial-gradient(110px 240px at 30% 86%, rgba(0,0,0,.55), transparent 60%),
+        radial-gradient(90px 220px at 46% 84%, rgba(0,0,0,.55), transparent 60%),
+        radial-gradient(120px 260px at 62% 88%, rgba(0,0,0,.55), transparent 60%),
+        radial-gradient(90px 220px at 78% 86%, rgba(0,0,0,.55), transparent 60%),
+        radial-gradient(90px 180px at 92% 84%, rgba(0,0,0,.55), transparent 60%);
+      opacity: .92;
+      pointer-events: none;
+    }
+
+    .owl{
+      position: absolute;
+      right: 10%;
+      top: 18%;
+      width: 120px;
+      height: 120px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 20px 50px rgba(0,0,0,.35);
+    }
+
+    .owl:before, .owl:after{
+      content:"";
+      position: absolute;
+      top: 42px;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.75);
+      box-shadow: inset 0 0 0 7px rgba(46,204,113,.18);
+    }
+
+    .owl:before{ left: 28px; }
+    .owl:after{ right: 28px; }
+
+    .owl .beak{
+      position: absolute;
+      left: 50%;
+      top: 70px;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 9px solid transparent;
+      border-right: 9px solid transparent;
+      border-top: 14px solid rgba(46,204,113,.85);
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,.35));
+    }
+
+    .owl .label{
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      color: rgba(255,255,255,.84);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    /* ===== Seksyen ===== */
+    section{ padding: 22px 0; }
+
+    .grid3{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .mini{
+      padding: 16px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .mini h3{ margin: 0 0 8px; font-size: 16px; }
+    .mini p{ margin: 0; color: var(--muted); line-height: 1.6; font-size: 14px; }
+
+    .section-title{
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 12px;
+    }
+
+    .section-title h2{ margin: 0; font-size: 20px; letter-spacing: -.2px; }
+    .section-title span{ color: var(--muted); font-size: 13px; }
+
+    .divider{ height: 1px; background: rgba(255,255,255,.12); margin: 18px 0; }
+
+    /* ===== Borang ===== */
+    form{ display: grid; gap: 10px; margin-top: 10px; }
+
+    input, textarea{
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.20);
+      color: var(--text);
+      outline: none;
+    }
+
+    input:focus, textarea:focus{
+      border-color: rgba(46,204,113,.55);
+      box-shadow: 0 0 0 4px rgba(46,204,113,.14);
+    }
+
+    textarea{ min-height: 110px; resize: vertical; }
+
+    .note{ color: var(--muted); font-size: 12px; line-height: 1.5; }
+
+    footer{ padding: 22px 0 36px; color: rgba(255,255,255,.70); font-size: 13px; }
+
+    /* ===== Responsif ===== */
+    @media (max-width: 900px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .grid3{ grid-template-columns: 1fr; }
+      .forest-frame{ min-height: 220px; }
+      .owl{ right: 12%; top: 14%; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="brand" aria-label="Jenama">
+          <span class="leaf" aria-hidden="true"></span>
+          <span>Owl Ni Malaysia</span>
+        </div>
+
+        <nav aria-label="Navigasi">
+          <ul>
+            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#spesies">Spesies</a></li>
+            <li><a href="#fakta">Fakta</a></li>
+            <li><a href="#hubungi">Hubungi</a></li>
+            <li><a class="btn" href="#hubungi">Tanya Kevin</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="card hero-left">
+            <h1>Burung hantu, tapi versi Malaysia.</h1>
+            <p class="sub">
+              Laman ringkas bertema hutan untuk kongsi info asas tentang burung hantu yang boleh ditemui di Malaysia.
+              Kau boleh jadikan ini sebagai landing page, nota ringkas, atau mini-portfolio.
+            </p>
+
+            <div class="pill-row" aria-label="Sorotan">
+              <span class="pill"><i aria-hidden="true"></i> Tema hutan hijau gelap</span>
+              <span class="pill"><i aria-hidden="true"></i> Layout responsif</span>
+              <span class="pill"><i aria-hidden="true"></i> Mudah edit (CSS variables)</span>
+            </div>
+
+            <div class="cta">
+              <a class="btn primary" href="#tentang">Teruskan</a>
+              <a class="btn" href="#hubungi">Nak tambah kandungan</a>
+            </div>
+          </div>
+
+          <div class="card hero-right" aria-label="Visual hutan">
+            <div class="forest-frame">
+              <div class="owl" aria-hidden="true">
+                <div class="beak"></div>
+                <div class="label">Siluet burung hantu</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider" role="separator" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section id="tentang">
+      <div class="container">
+        <div class="section-title">
+          <h2>Tentang laman ini</h2>
+          <span>Ringkas, kemas, dan senang ubah</span>
+        </div>
+
+        <div class="grid3">
+          <div class="mini">
+            <h3>Tujuan</h3>
+            <p>
+              Satu tempat untuk cerita pasal burung hantu di Malaysia—fakta asas, spesies pilihan, dan kenapa ia penting dalam ekosistem.
+            </p>
+          </div>
+          <div class="mini">
+            <h3>Gaya</h3>
+            <p>
+              Hijau gelap profesional, elemen kad lutsinar, dan visual hutan minimalis supaya nampak premium tapi tak serabut.
+            </p>
+          </div>
+          <div class="mini">
+            <h3>Senang edit</h3>
+            <p>
+              Tukar tajuk, teks, dan warna dengan cepat. Semua warna utama ada di <strong>:root</strong> (CSS variables).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="spesies">
+  <div class="container">
+    <div class="section-title">
+      <h2>Owl Species in Malaysia</h2>
+      <span>Listen • Learn • Recognise</span>
+    </div>
+
+    <!-- 1 -->
+    <div class="card" style="padding:18px; margin-bottom:16px;">
+      <h3>Sunda Scops-Owl <em>(Otus lempiji)</em></h3>
+      <p class="sub">
+        This is one of the most commonly heard owls in Malaysia, especially around villages, orchards, and forest edges. Despite its small size, the Sunda Scops-Owl is extremely adaptable and comfortable living close to human-modified landscapes. Most people recognise it by its repetitive, high-pitched call that echoes through the night.
+      </p>
+      <p class="sub">
+        It feeds mainly on insects and small invertebrates, making it an important natural pest controller. If you hear a short, steady call after sunset, chances are this owl is nearby.
+      </p>
+      <strong>Owl Call:</strong>
+      <audio controls src="https://xeno-canto.org/sounds/uploaded/OOECIWCSWV/XC742874-Otus%20lempiji.mp3"></audio>
+    </div>
+
+    <!-- 2 -->
+    <div class="card" style="padding:18px; margin-bottom:16px;">
+      <h3>Buffy Fish Owl <em>(Ketupa ketupu)</em></h3>
+      <p class="sub">
+        The Buffy Fish Owl is a large and powerful owl often found near rivers, wetlands, and forested waterways. Unlike many owls, this species feeds heavily on fish, frogs, and other aquatic animals. Its presence usually indicates a healthy water ecosystem.
+      </p>
+      <p class="sub">
+        This owl has a deep, booming call that sounds almost haunting in quiet riverine forests. Because it depends on clean water and natural riverbanks, habitat destruction poses a serious threat to this species.
+      </p>
+      <strong>Owl Call:</strong>
+      <audio controls src="https://xeno-canto.org/sounds/uploaded/SDPCHKOHRH/XC574276-Buffy%20Fish%20Owl.mp3"></audio>
+    </div>
+
+    <!-- 3 -->
+    <div class="card" style="padding:18px; margin-bottom:16px;">
+      <h3>Oriental Bay Owl <em>(Phodilus badius)</em></h3>
+      <p class="sub">
+        This owl is rarely seen but often heard in dense forests and shaded plantations. The Oriental Bay Owl has a distinctive heart-shaped face, similar to the Barn Owl, but prefers more forested environments.
+      </p>
+      <p class="sub">
+        Its call is soft, eerie, and ghost-like, making it one of the most mysterious owls in Malaysia. It feeds on small mammals and insects and plays a quiet but important role in forest ecosystems.
+      </p>
+      <strong>Owl Call:</strong>
+      <audio controls src="https://xeno-canto.org/sounds/uploaded/QKRSAXXQWS/XC635680-Oriental%20Bay%20Owl.mp3"></audio>
+    </div>
+
+    <!-- 4 -->
+    <div class="card" style="padding:18px; margin-bottom:16px;">
+      <h3>Brown Boobook <em>(Ninox scutulata)</em></h3>
+      <p class="sub">
+        The Brown Boobook is a small, agile owl commonly found in lowland forests, gardens, and agricultural areas. It is highly vocal and often calls repeatedly from the same perch.
+      </p>
+      <p class="sub">
+        This species feeds on insects, small birds, and rodents. Its sharp, rhythmic call makes it relatively easy to identify once you are familiar with the sound.
+      </p>
+      <strong>Owl Call:</strong>
+      <audio controls src="https://xeno-canto.org/sounds/uploaded/SDPCHKOHRH/XC593417-Brown%20Boobook.mp3"></audio>
+    </div>
+
+    <!-- 5 -->
+    <div class="card" style="padding:18px; margin-bottom:16px;">
+      <h3>Brown Wood Owl <em>(Strix leptogrammica)</em></h3>
+      <p class="sub">
+        This large forest owl prefers mature forests with tall trees. The Brown Wood Owl is rarely seen during the day and usually roosts high in dense canopy cover.
+      </p>
+      <p class="sub">
+        Its deep, resonant hoots can travel long distances at night. The species depends heavily on intact forest habitats, making deforestation a major concern for its survival.
+      </p>
+      <strong>Owl Call:</strong>
+      <audio controls src="https://xeno-canto.org/sounds/uploaded/VJYDFLJYQZ/XC560613-Brown%20Wood%20Owl.mp3"></audio>
+    </div>
+
+    <!-- 6 -->
+    <div class="card" style="padding:18px; margin-bottom:16px;">
+      <h3>Collared Scops Owl <em>(Otus lettia)</em></h3>
+      <p class="sub">
+        This species is rarely detected in Malaysia and is known for its sporadic appearances. The Collared Scops Owl prefers forested habitats and is extremely quiet outside its short calling periods.
+      </p>
+      <p class="sub">
+        Due to its low detection rate, very little is known by the public about this owl. Hearing its call is often considered a rare and lucky experience.
+      </p>
+      <strong>Owl Call:</strong>
+      <audio controls src="https://xeno-canto.org/sounds/uploaded/SDPCHKOHRH/XC506478-Collared%20Scops%20Owl.mp3"></audio>
+    </div>
+
+    <!-- 7 -->
+    <div class="card" style="padding:18px; margin-bottom:16px;">
+      <h3>Barn Owl <em>(Tyto alba)</em></h3>
+      <p class="sub">
+        The Barn Owl is one of the most recognisable owls in Malaysia, especially in oil palm plantations and agricultural landscapes. It is widely used as a natural rodent control agent.
+      </p>
+      <p class="sub">
+        Unlike typical hooting owls, the Barn Owl produces a harsh, screeching sound. Its silent flight and efficient hunting skills make it a key ally for farmers.
+      </p>
+      <strong>Owl Call:</strong>
+      <audio controls src="https://xeno-canto.org/sounds/uploaded/QKRSAXXQWS/XC609934-Barn%20Owl.mp3"></audio>
+    </div>
+
+    <!-- 8 -->
+    <div class="card" style="padding:18px; margin-bottom:16px;">
+      <h3>Barred Eagle-Owl <em>(Bubo sumatranus)</em></h3>
+      <p class="sub">
+        This is one of the largest owl species in Malaysia and a true apex nocturnal predator. It inhabits forest edges and mature woodlands.
+      </p>
+      <p class="sub">
+        The Barred Eagle-Owl has a powerful, booming call and feeds on a wide range of prey, including mammals and other birds. Due to its size, it requires large territories to survive.
+      </p>
+      <strong>Owl Call:</strong>
+      <audio controls src="https://xeno-canto.org/sounds/uploaded/VJYDFLJYQZ/XC531980-Barred%20Eagle-Owl.mp3"></audio>
+    </div>
+
+    <!-- 9 -->
+    <div class="card" style="padding:18px;">
+      <h3>Spotted Wood Owl <em>(Strix seloputo)</em></h3>
+      <p class="sub">
+        The Spotted Wood Owl is a forest-associated species often found near forest margins and mixed landscapes. It is less common and generally avoids highly disturbed areas.
+      </p>
+      <p class="sub">
+        Its call is deep and rhythmic, usually heard late at night. The species depends on habitat connectivity and forest complexity to thrive.
+      </p>
+      <strong>Owl Call:</strong>
+      <audio controls src="https://xeno-canto.org/sounds/uploaded/SDPCHKOHRH/XC589144-Spotted%20Wood%20Owl.mp3"></audio>
+    </div>
+  </div>
+</section>
+
+    <section id="fakta">
+      <div class="container">
+        <div class="section-title">
+          <h2>Fakta cepat</h2>
+          <span>Placeholder — isi ikut gaya kau</span>
+        </div>
+
+        <div class="grid3">
+          <div class="mini">
+            <h3>Aktif malam</h3>
+            <p>Kebanyakan burung hantu memburu pada waktu malam. Ruang ini boleh jadi “tips melihat burung hantu”.</p>
+          </div>
+          <div class="mini">
+            <h3>Pendengaran tajam</h3>
+            <p>Tambah fakta tentang pendengaran/struktur muka. Kau boleh masukkan rujukan atau link.</p>
+          </div>
+          <div class="mini">
+            <h3>Peranan ekosistem</h3>
+            <p>Predator kecil yang bantu kawal populasi haiwan perosak. Sesuai untuk mesej konservasi.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hubungi">
+      <div class="container">
+        <div class="section-title">
+          <h2>Apa lagi kau nak ada?</h2>
+          <span>Jawab soalan bawah dan aku kemaskan</span>
+        </div>
+
+        <div class="card" style="padding: 18px;">
+          <p class="sub" style="margin-bottom: 10px;">
+            Bagi aku 3–5 info ni, aku boleh susun jadi laman yang betul-betul ikut cita rasa kau.
+          </p>
+
+          <ol style="margin: 0; color: var(--muted); line-height: 1.7; padding-left: 18px;">
+            <li><strong>Tujuan laman</strong>: portfolio? info edukasi? jual produk? event?</li>
+            <li><strong>Bahagian wajib</strong>: galeri gambar, blog ringkas, peta lokasi, FAQ, dsb.</li>
+            <li><strong>Nama/handle</strong> yang nak dipaparkan (kalau ada).</li>
+            <li><strong>Link penting</strong>: IG/TikTok/YouTube/WhatsApp/email.</li>
+            <li><strong>Bahasa</strong>: BM sepenuhnya atau campur BI?</li>
+          </ol>
+
+          <form onsubmit="event.preventDefault(); alert('Form ini demo sahaja. Beritahu aku jawapan kau, nanti aku kemas versi akhir.');">
+            <input placeholder="Tujuan laman (contoh: landing page info burung hantu)" />
+            <textarea placeholder="Senaraikan benda yang kau nak tambah/ubah... (contoh: galeri 6 gambar, peta kawasan, section konservasi)"></textarea>
+            <button class="btn primary" type="submit">Hantar (demo)</button>
+            <div class="note">Nota: Butang ini sekadar demo. Kau boleh buang form ini kalau tak perlu.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="divider" role="separator" aria-hidden="true"></div>
+        <div style="display:flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+          <span>© <span id="y"></span> Owl Ni Malaysia</span>
+          <span style="color: rgba(255,255,255,.60)">Tema: Hutan Hijau Gelap • Dibina ringkas untuk mudah edit</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Tahun automatik
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
